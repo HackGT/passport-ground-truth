@@ -2,15 +2,32 @@
   "name": "passport-ground-truth",
   "version": "0.0.1",
   "description": "Passport authentication strategy for Ground Truth",
-  "main": "index.js",
+  "keywords": [
+    "passport",
+    "auth",
+    "authentication",
+    "node",
+    "hackgt"
+  ],
+  "repository": {
+    "type": "git",
+    "url": "git://github.com/HackGT/passport-ground-truth.git"
+  },
+  "bugs": {
+    "url": "https://github.com/HackGT/passport-ground-truth/issues"
+  },
+  "author": {
+    "name": "Ayush Goyal",
+    "email": "agoyal2001@gmail.com"
+  },
+  "main": "./lib/index.js",
   "directories": {
-    "lib": "lib"
+    "lib": "./lib"
   },
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
-  "author": "",
-  "license": "ISC",
+  "license": "MIT",
   "dependencies": {
     "passport-oauth2": "^1.6.0"
   }
