@@ -1,0 +1,17 @@
+{
+  "name": "passport-ground-truth",
+  "version": "0.0.1",
+  "description": "Passport authentication strategy for Ground Truth",
+  "main": "index.js",
+  "directories": {
+    "lib": "lib"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "passport-oauth2": "^1.6.0"
+  }
+}
