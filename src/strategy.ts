@@ -1,23 +1,36 @@
 import {
   InternalOAuthError,
   Strategy as OAuth2Strategy,
-  VerifyFunctionWithRequest,
 } from "passport-oauth2";
 
 export interface StrategyOption {
-  clientID: string;
-  clientSecret: string;
-  baseURL: string;
+  clientID: string | undefined;
+  clientSecret: string | undefined;
+  baseURL?: string;
   callbackURL: string;
-  authorizationURL?: string | undefined;
-  tokenURL?: string | undefined;
-  profileURL?: string | undefined;
+  authorizationURL?: string;
+  tokenURL?: string;
 }
+
+export interface Profile {
+  uuid: string;
+  name: string;
+  email: string;
+  token: string;
+}
+
+type VerifyFunction = (
+  req: Express.Request,
+  accessToken: string,
+  refreshToken: string,
+  profile: Profile,
+  done: (error: Error | null, user?: Express.User) => void
+) => void;
 
 export class GroundTruthStrategy extends OAuth2Strategy {
   public readonly baseURL: string;
 
-  constructor(options: StrategyOption, verify: VerifyFunctionWithRequest) {
+  constructor(options: StrategyOption, verify: VerifyFunction) {
     if (!options.clientID || !options.clientSecret) {
       throw new Error(
         "Client ID or secret not configured for Ground Truth authentication"
@@ -32,7 +45,9 @@ export class GroundTruthStrategy extends OAuth2Strategy {
 
     super(
       {
-        ...options,
+        clientID: options.clientID,
+        clientSecret: options.clientSecret,
+        callbackURL: options.callbackURL,
         authorizationURL:
           options.authorizationURL ||
           new URL("/oauth/authorize", options.baseURL).toString(),
