@@ -20,12 +20,12 @@ The Ground Truth authentication strategy authenticates users using a Ground Trut
 passport.use(
   new GroundTruthStrategy(
     {
-      clientID: GROUND_TRUTH_CLIENT_ID,
-      clientSecret: GROUND_TRUTH_CLIENT_SECRET,
+      clientID: process.env.GROUND_TRUTH_CLIENT_ID,
+      clientSecret: process.env.GROUND_TRUTH_CLIENT_SECRET,
+      baseURL: process.env.GROUND_TRUTH_URL,
       callbackURL: "/auth/login/callback",
-      baseURL: "https://login.hack.gt",
     },
-    function (accessToken, refreshToken, profile, done) {
+    async (req, accessToken, refreshToken, profile, done) {
       User.findOrCreate({ id: profile.id }, function (err, user) {
         return done(err, user);
       });
