@@ -26,11 +26,15 @@
     "lib": "./lib"
   },
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "build": "tsc"
   },
   "license": "MIT",
   "private": false,
   "dependencies": {
     "passport-oauth2": "^1.6.0"
+  },
+  "devDependencies": {
+    "@types/passport-oauth2": "^1.4.11",
+    "typescript": "^4.3.5"
   }
 }
