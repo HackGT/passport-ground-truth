@@ -14,7 +14,7 @@ $ npm install passport-ground-truth --save
 
 ### Configure Strategy
 
-The Ground Truth authentication strategy authenticates users using a Ground Truth account and Oauth 2.0 tokens. The strategy requires a `verify` callback, which accepts these credentials and calls `done` providing a user, as well as `options`, specifying a client ID, client secret, callback URL, and base URL.
+The Ground Truth authentication strategy authenticates users using a Ground Truth account and Oauth 2.0 tokens. The strategy requires a `verify` callback, which accepts these credentials and calls `done` providing a user, as well as `options`, specifying a client ID, client secret, base URL, and callback URL.
 
 ```js
 passport.use(
