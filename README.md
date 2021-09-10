@@ -17,6 +17,8 @@ $ npm install passport-ground-truth --save
 The Ground Truth authentication strategy authenticates users using a Ground Truth account and Oauth 2.0 tokens. The strategy requires a `verify` callback, which accepts these credentials and calls `done` providing a user, as well as `options`, specifying a client ID, client secret, base URL, and callback URL.
 
 ```js
+import { Strategy as GroundTruthStrategy } from "passport-ground-truth";
+
 passport.use(
   new GroundTruthStrategy(
     {
@@ -43,10 +45,14 @@ For example, as route middleware in an [Express](http://expressjs.com/)
 application:
 
 ```js
-app.get("/auth/login", passport.authenticate("groundtruth"));
+import express from "express";
 
-app.get(
-  "/auth/login/callback",
+export let authRoutes = express.Router();
+
+authRoutes.get("/login", passport.authenticate("groundtruth"));
+
+authRoutes.get(
+  "/login/callback",
   passport.authenticate("groundtruth", {
     failureRedirect: "/login",
     successReturnToOrRedirect: "/",
