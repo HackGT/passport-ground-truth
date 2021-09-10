@@ -54,7 +54,7 @@ authRoutes.get("/login", passport.authenticate("groundtruth"));
 authRoutes.get(
   "/login/callback",
   passport.authenticate("groundtruth", {
-    failureRedirect: "/login",
+    failureRedirect: "/",
     successReturnToOrRedirect: "/",
   }),
   (req, res) => {
