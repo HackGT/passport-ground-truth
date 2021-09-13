@@ -17,6 +17,7 @@ export interface Profile {
   name: string;
   email: string;
   token: string;
+  member: boolean;
 }
 
 type VerifyFunction = (
@@ -65,7 +66,7 @@ export class GroundTruthStrategy extends OAuth2Strategy {
 
   public userProfile(
     accessToken: string,
-    done: (err: Error | null, profile?: any) => void
+    done: (err: Error | null, profile?: Profile) => void
   ) {
     this._oauth2.get(
       new URL("/api/user", this.baseURL).toString(),
@@ -83,7 +84,7 @@ export class GroundTruthStrategy extends OAuth2Strategy {
             token: accessToken,
           };
           done(null, profile);
-        } catch (e) {
+        } catch (e: any) {
           done(e);
         }
       }
