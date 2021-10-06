@@ -8,6 +8,7 @@ This module lets you authenticate using Ground Truth in your Node.js application
 
 ```shell
 $ npm install passport-ground-truth --save
+$ npm install @types/passport-oauth2 --save-dev
 ```
 
 ## Usage
